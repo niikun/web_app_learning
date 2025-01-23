@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トップページ</title>
+</head>
+<body>
+    <header>
+        <h1>
+            {% if login_user_name %}
+                トップページ {{login_user_name}}さん
+            {% else %}
+                トップページ ゲストさん
+            {% endif %}
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{url_for('index')}}">トップページ</a>
+                </li>
+                <li>
+                    <a href="{{url_for('write')}}">書き込みページ</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% for message in message_list %}
+        <article>
+            <p>{{message.id}} - {{message.user_name}}</p>
+            <p>{{message.contents}}</p>
+        </article>
+    {% endfor %}
+    
+</body>
+</html>

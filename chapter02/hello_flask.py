@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    age:int=19
+    return "<p>貴方の年齢は" + str(age) +"です</p>"
 
 
 if __name__ == "__main__":
