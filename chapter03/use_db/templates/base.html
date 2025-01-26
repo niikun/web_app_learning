@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!-- ここにタイトルを記述 -->
+        {% endblock %}    
+    </title>
+</head>
+<body>
+    <header>
+        <h1>
+            {% block header %}
+            <!-- ここにヘッダーを記述 -->
+            {% endblock %}
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{url_for('index')}}">ホーム</a>
+                </li>
+                {% if login_user_name %}
+                    <li>
+                        <a href="{{url_for('write')}}">投稿</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('logout')}}">ログアウト</a>
+                    </li>
+                {% endif %}
+                {% if not login_user_name %}
+                    <li>
+                        <a href="{{url_for('signup')}}">新規登録</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('login')}}">ログイン</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </bnav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- ここにコンテンツを記述 -->
+        {% endblock %}
+
+    </main>
+</body>
+</html>

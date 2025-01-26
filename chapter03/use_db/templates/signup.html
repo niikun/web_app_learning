@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    新規登録
+{% endblock %}
+
+{% block header %}
+    新規登録
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <labal for=""username">ユーザー名</labal>
+        <input type=""text" name="username" required>
+        <label for=""passwoord">パスワード</label>
+        <input type="text" name="password" required>
+        <input type="submit" value="登録"> 
+    </form>
+{% endblock %}
