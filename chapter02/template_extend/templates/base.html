@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            <!--タイトルを挿入-->
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <h1>
+            {% block header %}
+                <!--ヘッダーを挿入-->
+            {% endblock %}
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('write')}}">write</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+            <!--コンテンツを挿入-->
+        {% endblock %}
+    </main>    
+</body>
+</html>

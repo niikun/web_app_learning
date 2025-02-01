@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    投稿ページ
+{% endblock %}
+{% block header %}
+    {% if login_user_name %}
+        <h1>ようこそ{{login_user_name}}さん</h1>
+    {% else %}
+        <h1>ようこそゲストさん</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="{{url_for('write')}}" method="POST">
+        <p><textarea name="contents" rows="5" cols="60" value="{{contents}}"></textarea></p>
+        <input type="hidden" name="user_name" value="{{login_user_name}}">
+        <input type="submit" value="投稿">
+    </form>
+{% endblock %}

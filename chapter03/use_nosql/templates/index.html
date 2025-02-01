@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リアルタイムチャット</title>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>リアルタイムチャット</h1>
+    <ul id="messages"></ul>
+    <input type="text" id="message-input" placeholder="メッセージを入力してください">
+    <button id="send-message">送信</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+            const messageInput = document.getElementById('message-input');
+            const messageButton = document.getElementById('send-message');
+            const messagesList = document.getElementById('messages');
+
+            const appendMessage = message => {
+                const li = document.createElement('li');
+                li.textContent = message;
+                messagesList.appendChild(li);
+            };
+
+            socket.on("connect", () => socket.emit("load messages"));
+
+            socket.on("load all messages", messages => messages.forEach(appendMessage));
+
+            messageButton.addEventListener("click", () => {
+                if (messageInput.value.trim() !== "") {
+                    socket.emit("send message", messageInput.value);
+                    messageInput.value = "";
+                }
+            });
+
+            socket.on("new message", appendMessage);
+        });
+    </script>
+</body>
+</html>

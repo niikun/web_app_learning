@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    掲示板のトップ
+{% endblock %}
+
+{% block header %}
+    {% if login_user_name %}
+        <p>ようこそ{{login_user_name}}さん</p>
+    {% else %}
+        <p>ようこそゲストさん</p>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% for message in message_list %}
+        <article>
+            <p>{{message.id}} - {{message.user_name}}</p>
+            <p>{{message.contents}}</p>  
+        </article>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            <!-- ここにタイトルを入力 -->
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        {% block header %}
+            <!-- ここにヘッダーを入力 -->
+        {% endblock %}  
+        <nav>
+            <ul>
+                <li><a href="{{url_for('index')}}">トップ</a></li>
+                <li><a href="{{url_for('write')}}">投稿</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+            <!-- ここにコンテンツを入力 -->
+        {% endblock %}
+    </main>
+</body>
+</html>

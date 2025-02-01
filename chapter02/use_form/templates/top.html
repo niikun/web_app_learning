@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    掲示板のトップ
+{% endblock %}
+
+{% block header %}
+    {% if login_user_name %}
+    <h1>ようこそ{{login_user_name}}さん</h1>
+    {% else %}
+    <h1>ようこそゲストさん</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <form action="{{url_for('index')}}" method="GET">
+            <input type="search" name="search_words" values="{{search_words}}">
+            <input type="submit" value="検索">
+        </form>
+    </section>
+    <section>
+        {% for message in message_list %}
+            <article>
+                <p>{{message.id}} - {{message.user_name}}</p>
+                <p>{{message.contents}}</p>  
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

@@ -3,3 +3,7 @@ pytest
 click
 black
 flask
+flask_sqlalchemy
+flask_login
+flask-socketio
+pymongo
