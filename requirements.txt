@@ -7,3 +7,14 @@ flask_sqlalchemy
 flask_login
 flask-socketio
 pymongo
+japanmap
+matplotlib
+geopandas
+folium
+tensorflow
+keras
+matplotlib-fontja
+scikit-learn
+sentence-transformers
+tf-keras
+python-dotenv
